@@ -1,0 +1,39 @@
+#scaleout: 20
+#chunksize: 200000
+#queue: "espresso"
+
+#cores-per-worker: 1
+#mem-per-worker: 4
+#walltime: "12:00:00"
+#retries: 20
+
+
+chunksize: 10000
+queue: "standard"
+conda-env: True
+scaleout: 50
+retries: 50               # Much more retries for fault tolerance
+mem-per-worker: 8         # More memory per worker
+
+# Custom setup commands for condor jobs
+custom-setup-commands:
+  - "source /cvmfs/cms.cern.ch/cmsset_default.sh"
+  - "source /cvmfs/grid.desy.de/etc/profile.d/grid-ui-env.sh"
+  - "export USER_CXXFLAGS='-Wno-misleading-indentation'"
+  - "export MAMBA_ROOT_PREFIX=/data/dust/user/leyvaped/ttHbb_software/micromamba"
+#  - "eval \"$(/data/dust/user/leyvaped/ttHbb_software/micromamba_bin/micromamba shell hook -s bash -p /data/dust/user/leyvaped/ttHbb_software/micromamba)\""
+  - "micromamba activate pocket-coffea"
+
+# chunksize means the number of events that will be processed by each worker
+# scaleout means the number of workers that will be used (or jobs running in parallel)
+# queue means the queue to use
+# mem-per-worker means the memory per worker
+# lf means the number of files per worker
+# lc means the number of cores per worker
+# limit-chunks means the number of chunks to process
+# limit-events means the number of events to process
+# limit-time means the time to process
+# see more in https://pocketcoffea.readthedocs.io/en/latest/running.html
+
+
+
