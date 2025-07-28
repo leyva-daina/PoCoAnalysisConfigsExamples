@@ -8,17 +8,16 @@
 #retries: 20
 
 
-chunksize: 10000
+chunksize: 25000
 queue: "standard"
 conda-env: True
-scaleout: 50
+scaleout: 200
 retries: 50               # Much more retries for fault tolerance
 mem-per-worker: 8         # More memory per worker
 
 # Custom setup commands for condor jobs
 custom-setup-commands:
   - "source /cvmfs/cms.cern.ch/cmsset_default.sh"
-  - "source /cvmfs/grid.desy.de/etc/profile.d/grid-ui-env.sh"
   - "export USER_CXXFLAGS='-Wno-misleading-indentation'"
   - "export MAMBA_ROOT_PREFIX=/data/dust/user/leyvaped/ttHbb_software/micromamba"
 #  - "eval \"$(/data/dust/user/leyvaped/ttHbb_software/micromamba_bin/micromamba shell hook -s bash -p /data/dust/user/leyvaped/ttHbb_software/micromamba)\""
