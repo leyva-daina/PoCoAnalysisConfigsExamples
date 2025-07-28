@@ -1,5 +1,4 @@
 source /cvmfs/cms.cern.ch/cmsset_default.sh
-source /cvmfs/grid.desy.de/etc/profile.d/grid-ui-env.sh
 micromamba activate pocket-coffea 
 
 # go to your folder, where you want to run the analysis
